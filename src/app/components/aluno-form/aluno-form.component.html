@@ -1,0 +1,178 @@
+<div fxLayout="row" class="m-container">
+  <div fxFlex="35" class="m-container-a">
+    <!-- Seu conteúdo aqui -->
+    <div class="person-container">
+      <app-image-upload (imageSelected)="onImageSelected($event)"></app-image-upload>
+    </div>
+    <div>
+      <h2 style="color: #00000082; margin: 20px;">Nome:</h2>
+      <h4 style="color: #00000082; margin: 20px;">Thales Rocha</h4>
+    </div>
+  </div>
+  <div fxFlex layout-fill>
+    <!-- Este div ocupará o espaço restante -->
+    <mat-tab-group>
+
+      <mat-tab label="Informações">
+
+        <div class="container mt-3">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col">
+                <label for="nomeCompleto">Nome Completo</label>
+                <input type="text" id="nomeCompleto" formControlName="nomeCompleto"
+                placeholder=""[ngClass]="{ 'error': form.get('nomeCompleto').invalid &&
+                (form.get('nomeCompleto').dirty || form.get('nomeCompleto').touched) &&
+                !form.get('nomeCompleto').value }">
+              </div>
+              <div class="col-4">
+                <label for="primeiroNome">Primeiro Nome</label>
+                <input type="text" id="primeiroNome" formControlName="primeiroNome"
+                placeholder=""[ngClass]="{ 'error': form.get('primeiroNome').invalid &&
+                (form.get('primeiroNome').dirty || form.get('primeiroNome').touched) &&
+                !form.get('primeiroNome').value }">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" formControlName="email"
+                placeholder=""[ngClass]="{ 'error': form.get('email').invalid &&
+                (form.get('email').dirty || form.get('email').touched) &&
+                !form.get('email').value }">
+              </div>
+              <div class="col-4">
+                <label for="genero">Gênero</label>
+                <select id="genero" formControlName="genero"
+                placeholder=""[ngClass]="{ 'error': form.get('genero').invalid &&
+                (form.get('genero').dirty || form.get('genero').touched) &&
+                !form.get('genero').value }">
+                  <option value="" disabled selected>Selecione...</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="feminino">Feminino</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" formControlName="cpf" placeholder="###.###.###-##"
+                [ngClass]="{ 'error': form.get('cpf').invalid &&
+                (form.get('cpf').dirty || form.get('cpf').touched) &&
+                !form.get('cpf').value }">
+              </div>
+              <div class="col">
+                <label for="rg">RG</label>
+                <input type="text" id="rg" formControlName="rg"
+                placeholder=""[ngClass]="{ 'error': form.get('rg').invalid &&
+                (form.get('rg').dirty || form.get('rg').touched) &&
+                !form.get('rg').value }">
+
+              </div>
+              <div class="col">
+                <label for="dataNascimento">Data de Nascimento</label>
+                <input type="date" id="dataNascimento" formControlName="dataNascimento"
+                placeholder=""[ngClass]="{ 'error': form.get('dataNascimento').invalid &&
+                (form.get('dataNascimento').dirty || form.get('dataNascimento').touched) &&
+                !form.get('dataNascimento').value }">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="estadoCivil">Estado Civil</label>
+                <select id="estadoCivil" formControlName="estadoCivil"
+                placeholder=""[ngClass]="{ 'error': form.get('estadoCivil').invalid &&
+                (form.get('estadoCivil').dirty || form.get('estadoCivil').touched) &&
+                !form.get('estadoCivil').value }">
+                  <option value="" disabled selected>Selecione...</option>
+                  <option value="solteiro">Solteiro</option>
+                  <option value="casado">Casado</option>
+                  <option value="divorciado">Divorciado</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="telefone1">Telefone 1</label>
+                <input type="tel" id="telefone1" formControlName="telefone1"
+                placeholder=""[ngClass]="{ 'error': form.get('telefone1').invalid &&
+                (form.get('telefone1').dirty || form.get('telefone1').touched) &&
+                !form.get('telefone1').value }">
+              </div>
+              <div class="col">
+                <label for="telefone2">Telefone 2</label>
+                <input type="tel" id="telefone2" formControlName="telefone2"
+                placeholder=""[ngClass]="{ 'error': form.get('telefone2').invalid &&
+                (form.get('telefone2').dirty || form.get('telefone2').touched) &&
+                !form.get('telefone2').value }">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="profissao">Profissão</label>
+                <input type="text" id="profissao" formControlName="profissao"
+                placeholder=""[ngClass]="{ 'error': form.get('profissao').invalid &&
+                (form.get('profissao').dirty || form.get('profissao').touched) &&
+                !form.get('profissao').value }">
+              </div>
+              <div class="col">
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" formControlName="empresa"
+                placeholder=""[ngClass]="{ 'error': form.get('empresa').invalid &&
+                (form.get('empresa').dirty || form.get('empresa').touched) &&
+                !form.get('empresa').value }">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 mt-3">
+                <button type="submit" [disabled]="form.valid">Enviar</button>
+              </div>
+              <div class="col mt-3">
+                <div *ngIf="msgErro" class="error-message-g">{{ msgErro }}</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-tab>
+
+
+
+      <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </form> -->
+
+
+      <mat-tab label="Endereço"> Content 2 </mat-tab>
+      <mat-tab label="Contatos"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

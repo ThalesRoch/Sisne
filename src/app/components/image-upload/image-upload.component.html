@@ -1,0 +1,9 @@
+<div class="container">
+  <label for="file-input" class="image-preview">
+    <img *ngIf="imageUrl || defaultImageUrl" [src]="imageUrl || defaultImageUrl" alt="Profile Image">
+
+  </label>
+  <input #fileInput id="file-input" type="file" (change)="onFileSelected($event)" class="file-input">
+  <button mat-button color="primary" class="upload-button" (click)="fileInputClick()">Sua foto</button>
+</div>
+
