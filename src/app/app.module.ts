@@ -9,6 +9,7 @@ import { AlunoFormComponent } from './components/aluno-form/aluno-form.component
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-
-
+    HttpClientModule
 
   ],
   providers: [],

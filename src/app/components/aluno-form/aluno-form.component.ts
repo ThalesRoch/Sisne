@@ -1,5 +1,7 @@
+import { AlunoServiceService } from './../../services/aluno-service.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -20,15 +22,17 @@ export class AlunoFormComponent {
 
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private alunoServiceService: AlunoServiceService
+    ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       nomeCompleto: ['', Validators.required],
       primeiroNome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      seo: ['', Validators.required],
-      cpf: ['', [Validators.required, Validators.pattern(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)]],
+      cpf: ['', [Validators.required]],
       rg: ['', Validators.required],
       dataNascimento: ['', Validators.required],
       estadoCivil: ['', Validators.required],
@@ -41,12 +45,13 @@ export class AlunoFormComponent {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    //console.log(this.form);
     if (this.form.valid) {
+      var retorno =
+      this.alunoServiceService.enviarDadosFormulario(this.form.value)
+      console.log(retorno)
 
-    }else{
-      this.msgErro = 'Por favor, preencha todos os campos obrigatórios.';
-    }
+    }else{}
   }
 
 
